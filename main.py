@@ -1,8 +1,6 @@
 from PIL import Image
-img1 = Image.open('./receipt-1.jpg')
-img1.rotate(90)
-img2 = Image.open('./receipt-2.jpg')
-img2.rotate(90)
+img1 = Image.open('./receipt-1.jpg').rotate(-90)
+img2 = Image.open('./receipt-2.jpg').rotate(-90)
 
 def combine(image1,image2):
     xsize1,ysize1=image1.size
