@@ -1,4 +1,7 @@
+from ImageProcessor import *
 // rotates the images
+
+
 // sends the combined images to Google OCR
 // parses out the results for product name and price
 // de-duplicates all product names
