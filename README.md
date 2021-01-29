@@ -4,8 +4,16 @@ Using Google Vision API, process some images into a CSV for use in cataloging yo
 
 ## Requirements
 
-* apt install libjpeg-dev
-* pip3 install pillow
+Note some of the dependencies require python development libraries and C++, in Fedora you can install these as follows (note the # implies root prompt or sudo):
+
+```
+# dnf install libjpeg-dev gcc-c++ kernel-devel python3-devel
+```
+
+Then install the Python package dependencies with the following command (note the $ implies "user prompt" rather than root or sudo)
+```
+$ pip3 install . 
+```
 
 ## See Also
 
