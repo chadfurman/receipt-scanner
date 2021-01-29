@@ -7,7 +7,6 @@ setup(name='receipt-scanner',
       author='Chad Furman',
       author_email='chad@chadfurman.com',
       license='MIT',
-      packages=['receipt-scanner'],
       install_requires=[
           'pillow',
           'google-cloud-vision'
