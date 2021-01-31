@@ -1,5 +1,6 @@
 from PIL import Image
 from ImageProcessor import combine
+from Google.Vision.detect import detect_text
 
 def run():
     img1 = Image.open('assets/receipt-1.jpg').rotate(-90)
@@ -8,6 +9,8 @@ def run():
     result = combine.combine_y(img1,img2)
 
     result.save('assets/result.jpg')
+
+    detect_text('assets/result.jpg')
 
     
 if __name__ == '__main__':
