@@ -1,10 +1,14 @@
 from PIL import Image
-from ImageProcessor import combine_y
+from ImageProcessor import combine
 
-img1 = Image.open('./receipt-1.jpg').rotate(-90)
-img2 = Image.open('./receipt-2.jpg').rotate(-90)
+def run():
+    img1 = Image.open('assets/receipt-1.jpg').rotate(-90)
+    img2 = Image.open('assets/receipt-2.jpg').rotate(-90)
 
-result = combine_y(img1,img2)
+    result = combine.combine_y(img1,img2)
 
-result.save('result.jpg')
+    result.save('assets/result.jpg')
+
     
+if __name__ == '__main__':
+    run()
