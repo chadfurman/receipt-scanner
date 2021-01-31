@@ -9,5 +9,5 @@ def test_combine_big_x():
     test_image_big_x = Image.new('RGBA',(x1,y1))
     test_image_small_x = Image.new('RGBA',(x2,y2))
     new_img = combine.combine_y(test_image_small_x, test_image_big_x)
-    assert img.size[0] == x1 ## should be the bigger of the X
-    assert img.size[1] == y1+y2
+    assert new_img.size[0] == x1 ## should be the bigger of the X
+    assert new_img.size[1] == y1+y2
