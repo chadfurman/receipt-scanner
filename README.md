@@ -15,7 +15,11 @@ Then install the Python package dependencies with the following command (note th
 $ pip3 install . 
 ```
 
+also install the google sdk: https://cloud.google.com/sdk/docs/install
+
+ 
+
 ## See Also
 
 * Google Vision API: https://github.com/googleapis/python-vision
-
+* Google client library quickstart: https://cloud.google.com/vision/docs/quickstart-client-libraries
