@@ -9,6 +9,7 @@ setup(name='receipt-scanner',
       license='MIT',
       install_requires=[
           'pillow',
-          'google-cloud-vision'
+          'google-cloud-vision',
+          'pytest'
       ],
       zip_safe=False)
