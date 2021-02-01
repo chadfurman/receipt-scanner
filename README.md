@@ -23,3 +23,8 @@ also install the google sdk: https://cloud.google.com/sdk/docs/install
 
 * Google Vision API: https://github.com/googleapis/python-vision
 * Google client library quickstart: https://cloud.google.com/vision/docs/quickstart-client-libraries
+
+## TODO
+
+* Parse product name and prices from OCR output
+  * The OCR text doesn't spit out product name in a single line, and sometimes the price is on the first line but the name is split across two lines which makes this slightly challenging
