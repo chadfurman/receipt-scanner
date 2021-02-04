@@ -1,3 +1,4 @@
+
 def detect_text(path,return_text=False):
     """Detects text in the file."""
     from google.cloud import vision
@@ -11,11 +12,11 @@ def detect_text(path,return_text=False):
 
     response = client.text_detection(image=image)
     texts = response.text_annotations
-    print('Texts:')
 
     if return_text:
         return texts
 
+    print('Texts:')
     for text in texts:
         print('\n"{}"'.format(text.description))
 
