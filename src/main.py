@@ -3,6 +3,7 @@ import os
 from PIL import Image
 from ImageProcessor import combine
 from Google.Vision.detect import detect_text
+from Parser import parser
 import pickle
 
 def run():
@@ -24,7 +25,7 @@ def run():
         for text in texts:
             vertices = []
             for vertex in text.bounding_poly.vertices:
-                vertices.append((vertex.x, vertex.y))
+                vertices.append([vertex.x, vertex.y])
             raw_text.append({
                 'description': str(text.description),
                 'vertices': vertices
@@ -33,8 +34,8 @@ def run():
         pickle.dump(raw_text, file)
         file.close()
 
-    print(raw_text)
+    print(parser.get_first_product(raw_text[1:]))
 
-    
+
 if __name__ == '__main__':
     run()
