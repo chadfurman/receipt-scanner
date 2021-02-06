@@ -1,3 +1,6 @@
+THRESHOLD = 100
+
+
 def get_word_top_right_bottom_left_from_verteces(verteces):
     top = max(verteces[0][1], verteces[1][1])
     right = max(verteces[1][0], verteces[2][0])
@@ -29,16 +32,20 @@ def get_receipt_right(raw):
 
 
 def is_word_below_header(word,raw):
-    word_spots = get_word_top_right_bottom_left_from_raw_parts(word, raw)
     header_bottom = get_header_bottom(raw)
-    if word_spots['top'] > header_bottom:
+    return is_word_below_line(word, header_bottom, raw)
+
+
+def is_word_below_line(word, line, raw):
+    word_spots = get_word_top_right_bottom_left_from_raw_parts(word, raw)
+    if word_spots['top'] > line:
         return True
     else:
         return False
 
 
 def word_is_close_to_word(word1, word2):
-    threshold = 100
+    threshold = THRESHOLD
     parts1 = get_word_top_right_bottom_left_from_verteces(word1['vertices'])
     parts2 = get_word_top_right_bottom_left_from_verteces(word2['vertices'])
     top1 = parts1['top']
@@ -50,12 +57,18 @@ def word_is_close_to_word(word1, word2):
         return True
 
 
-def get_first_product(raw):
+def get_product_below_line(raw, line=None):
     product = None
     for text in raw:
         description = text['description']
-        if not product and is_word_below_header(text['description'], raw) :
-            product = text
+        if not product:
+            if not line:
+                if is_word_below_header(text['description'], raw):
+                    product = text
+            else:
+                if is_word_below_line(text['description'], line, raw):
+                    product = text
+
         if product and word_is_close_to_word(text, product):
             print(description)
-    return None
+    return get_word_top_right_bottom_left_from_verteces(product['vertices'])['bottom'] + THRESHOLD
