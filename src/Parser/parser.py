@@ -1,4 +1,4 @@
-THRESHOLD = 100
+THRESHOLD = 200
 
 
 def get_word_top_right_bottom_left_from_verteces(verteces):
@@ -59,6 +59,7 @@ def word_is_close_to_word(word1, word2):
 
 def get_product_below_line(raw, line=None):
     product = None
+    result_word = ''
     for text in raw:
         description = text['description']
         if not product:
@@ -70,5 +71,9 @@ def get_product_below_line(raw, line=None):
                     product = text
 
         if product and word_is_close_to_word(text, product):
-            print(description)
-    return get_word_top_right_bottom_left_from_verteces(product['vertices'])['bottom'] + THRESHOLD
+            result_word += ' ' + description
+    if product :
+        coords = get_word_top_right_bottom_left_from_verteces(product['vertices'])
+        if coords:
+            return (result_word, coords['bottom'] + THRESHOLD)
+    return (None, None)

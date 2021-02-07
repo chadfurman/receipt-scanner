@@ -34,9 +34,11 @@ def run():
         pickle.dump(raw_text, file)
         file.close()
 
-    bottom_of_first_product = parser.get_product_below_line(raw_text[1:])
-    print('----')
-    bottom_of_second_product = parser.get_product_below_line(raw_text[1:], bottom_of_first_product)
+    (word, bottom_of_product) = parser.get_product_below_line(raw_text[1:])
+    while word:
+        print('----')
+        print(word)
+        (word, bottom_of_product) = parser.get_product_below_line(raw_text[1:], bottom_of_product)
 
 
 if __name__ == '__main__':
