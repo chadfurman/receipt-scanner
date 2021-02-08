@@ -1,7 +1,7 @@
 import os
 
 from PIL import Image
-from ImageProcessor import combine
+from ImageProcessor import combine, edge_finder
 from Google.Vision.detect import detect_text
 from Parser import parser
 import pickle
@@ -11,6 +11,7 @@ def run():
     img2 = Image.open('assets/receipt-2.jpg').rotate(-90)
 
     result = combine.combine_y(img1,img2)
+    edge_finder.find_left_right_edge_on_horizontal_line(result)
 
     result.save('assets/result.jpg')
 
