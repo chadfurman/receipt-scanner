@@ -11,7 +11,7 @@ def run():
     img2 = Image.open('assets/receipt-2.jpg').rotate(-90)
 
     result = combine.combine_y(img1,img2)
-    edge_finder.find_left_right_edge_on_horizontal_line(result)
+#    edge_finder.find_left_right_edge_on_horizontal_line(result)
 
     result.save('assets/result.jpg')
 
@@ -35,11 +35,9 @@ def run():
         pickle.dump(raw_text, file)
         file.close()
 
-    (word, bottom_of_product) = parser.get_product_below_line(raw_text[1:])
-    while word:
-        print('----')
-        print(word)
-        (word, bottom_of_product) = parser.get_product_below_line(raw_text[1:], bottom_of_product)
+    products = parser.get_all_products(raw_text[0])
+    for product in products:
+        print(str(product))
 
 
 if __name__ == '__main__':

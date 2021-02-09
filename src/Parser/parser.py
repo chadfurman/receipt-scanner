@@ -1,3 +1,5 @@
+import re
+
 THRESHOLD = 200
 
 
@@ -77,3 +79,27 @@ def get_product_below_line(raw, line=None):
         if coords:
             return (result_word, coords['bottom'] + THRESHOLD)
     return (None, None)
+
+def get_raw_products_from_raw_text(raw):
+    raw = raw['description'].replace('\n', ' ')
+    products_extractor = re.compile('.*Clerk.*?([\d]{5,}.*)')
+    matches = products_extractor.match(str(raw))
+    return matches.group(1)
+
+def get_product_line_from_products(products):
+    product_matcher = re.compile('.*?([\d]{5,}.*?)([\d]{5,}.*)')
+    match = product_matcher.match(products)
+    if not match:
+        return (None, None)
+    return (match.group(1), match.group(2))
+
+def get_all_products(raw):
+    raw_products = get_raw_products_from_raw_text(raw)
+    products = []
+
+    (product, rest) = get_product_line_from_products(raw_products)
+    products.append(product)
+    while rest is not None:
+        (product, rest) = get_product_line_from_products(rest)
+        products.append(product)
+    return products
