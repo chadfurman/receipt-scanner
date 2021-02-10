@@ -7,3 +7,8 @@ name = "pypi"
 
 [requires]
 python_version = "3.6"
+
+[packages]
+receipt-scanner = {editable = true, path = "."}
+kivy = {extras = ["base"], version = "*"}
+kivy-examples = "*"
